@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main id="main-doc">
+        <nav id="navbar">
+            <header>CSS Documentation</header>
+            <ul>
+                <li>
+                    <a href="#Introduction" class="nav-link"> Introduction </a>
+                </li>
+                <li>
+                    <a href="#What_you_should_already_know" class="nav-link">
+                        What you should already know
+                    </a>
+                </li>
+                <li>
+                    <a href="#What_is_HTML" class="nav-link">What is html</a>
+                </li>
+                <li>
+                    <a href="#How_to_use" class="nav-link"> How to use </a>
+                </li>
+                <li>
+                    <a href="#Linking_stylesheet_to_your_own_page" class="nav-link">
+                        Linking stylesheet to your own page
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="wrap">
+
+            <section class="main-section" id="Introduction">
+                <header>
+                    Introduction
+             </header>
+            <p>
+                Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language such as HTML.[1] CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript.[2]
+            </p>
+            <p>
+                CSS is designed to enable the separation of presentation and content, including layout, colors, and fonts.[3] This separation can improve content accessibility; provide more flexibility and control in the specification of presentation characteristics; enable multiple web pages to share formatting by specifying the relevant CSS in a separate .css file, which reduces complexity and repetition in the structural content; and enable the .css file to be cached to improve the page load speed between the pages that share the file and its formatting.
+            </p>
+        </section>
+        <section class="main-section" id="What_you_should_already_know">
+            <header>
+                What you should already know
+            </header>
+            <p>
+                This is what u should already know
+            </p>
+            <ul>
+                <li> HTML </li>
+            </ul>
+        </section>
+        <section class="main-section" id="What_is_HTML">
+            <header>
+                What is HTML
+            </header>
+            <p>
+                The HyperText Markup Language, or HTML is the standard markup language for documents designed to be displayed in a web browser. It can be assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript.
+            </p>
+            <p>
+                HTML elements are the building blocks of HTML pages. With HTML constructs, images and other objects such as interactive forms may be embedded into the rendered page. HTML provides a means to create structured documents by denoting structural semantics for text such as headings, paragraphs, lists, links, quotes and other items. HTML elements are delineated by tags, written using angle brackets. Tags such as and directly introduce content into the page. Other tags such as surround and provide information about document text and may include other tags as sub-elements. Browsers do not display the HTML tags, but use them to interpret the content of the page.
+            </p>
+        </section>
+        <section class="main-section" id="How_to_use">
+            <header>
+                How to use
+            </header>
+            <ul>
+                <li>
+                    <code>
+                        p {
+                            color: red;
+                            text-align: center;
+                        }
+                    </code>
+                </li>
+                <li>
+                    Example Explained <br />
+                    p is a selector in CSS (it points to the HTML element you want to style:). <br />
+                    color is a property, and red is the property value
+                    text-align is a property, and center is the property value
+                </li>
+            <p>
+                Another : <br />
+            </p>
+        </ul>
+            <ul>
+                <li>
+                    <code>
+                        body {
+                            background-color: lightblue;
+                        }
+                    </code>
+                </li>
+            <li>
+                <code>
+                    h1 {
+                        color: white;
+                        text-align: center;
+                    }
+                </code>
+            </li>        
+            <li>
+                
+                <code>
+                    p {
+                        font-family: verdana;
+                        font-size: 20px;
+                    }
+                </code>
+            </li>
+            <li>
+
+                <code>
+                    p {
+                        margin-top: 100px;
+                        margin-bottom: 100px;
+                        margin-right: 150px;
+                        margin-left: 80px;
+                    }
+                </code>
+            </li>
+        </ul>
+    </section>
+    <section class="main-section" id="Linking_stylesheet_to_your_own_page">
+        <header>
+            Linking stylesheet to your own page
+        </header>
+        <p>
+                sometimes we get dizzy when using CSS in external sheets, so we are tired and difficult to arrange each layout, therefore to make it easier and more practical we can use link style sheets, how do we do that?         
+            </p>
+            <p>
+                There Is : <br />
+                <code>
+                    &lt;link rel="stylesheet" href="yourstyle.css"&gt;
+                </code>
+            </p>
+            <br>
+            
+            <p>
+                No more trouble and hassle in managing our styles with separate stylesheets. this way we save space and time
+            </p>
+            <p>
+                Look More At <a href="https://id.wikipedia.org/wiki/Cascading_Style_Sheets">
+                CSS Wikipedia </a>
+            </p>
+        </section>
+    </div>
+    </main>
+</body>
+</html>

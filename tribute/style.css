@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#main {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+}
+
+#main #img-div {
+    width: 100%;
+    background-color: grey;
+}
+
+#main #img-div #image {
+    max-width: 50%;
+    margin: auto;
+    display: block;
+    padding: 12px;
+}
+
+#tribute-info {
+    display: flex;
+    justify-content: center;
+}
+#tribute-info ul {
+    width: 100%;
+}
+
+#tribute-info ul li {
+    margin-top: 20px;
+    text-align: left;
+}
+
+#img-caption {
+    margin-top: 15px;
+    font-size: 20px;
+    text-align: center;
+}
+
+span {
+    margin-top: 20px;
+}
+i {
+    margin-top: 20px;
+}
+
+p {
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 20px;
+}

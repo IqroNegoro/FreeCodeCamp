@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container">
+    <h1 id="title"> Survey For Product </h1>
+    <p id="description"> Let me know what u like from us ! </p>
+    <div class="form">
+      <form id="survey-form" novalidate>
+        <label for="name" id="name-label">
+          Your Name
+          <input type="text" id="name" placeholder="Your Name" required placeholder="name">
+        </label>
+        <label for="email" id="email-label">
+          Your Mail
+          <input type="email" name="email" id="email" required placeholder="email">
+        </label>
+        <label for="number" id="number-label">
+          Your Number
+          <input type="number" id="number" min="1" max="13" placeholder="Your Number" required>
+        </label>
+        <label for="dropdown">
+          what your think about us?
+          <select name="" id="dropdown">
+          <option value=""> Very Nice </option>
+          <option value=""> Great </option>
+          <option value=""> Enough </option>
+          <option value=""> Damn, its such pain </option>
+        </select>
+      </label>
+        <p> What is not enough from us ? </p>
+        <input type="radio" name="opinion" value="Price"> Price
+        <input type="radio" name="opinion" value="Response"> Response
+        <input type="radio" name="opinion" value="Quality"> Quality
+        <p> what u want to level up us? </p>
+        <input type="checkbox" name="checkbox" value="disc"> Discount Product!
+        <input type="checkbox" name="checkbox" value="response"> Fast Delivery
+        <input type="checkbox" name="checkbox" value="fastresponse"> Fast Response
+        <textarea name="textarea" id="textarea" placeholder="additional comments"></textarea>
+        <button type="submit" id="submit"> Submit </button>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>

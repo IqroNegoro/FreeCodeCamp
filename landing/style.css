@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+    box-shadow: 0 0 8px 0px rgba(0, 0, 0, .1);
+    background-color: white;
+}
+
+img {
+    width: 250px;
+    height: 100px;
+}
+
+#nav-bar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+    align-items: center;
+}
+
+#nav-bar a {
+    margin: 12px 12px;
+    width: 100px;
+    outline: none;
+    text-decoration: none;
+    color: black;
+    font-size: 25px;
+}
+
+#quality, #products, #prices {
+    width: 50%;
+    margin: auto;
+    margin-top: 100px;
+    text-align: left;
+    font-size: 20px;
+}
+
+#products {
+    margin-top: 50px;
+    text-align: center;
+}
+
+#prices {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+}
+
+.price {
+    border: 1px solid;
+    margin: 0 10px;
+    text-align: center;
+}
+
+button {
+    width: 50%;
+    background-color: rgb(62, 62, 255);
+    font-size: 20px;
+    padding: 12px;
+    color: white;
+    border: 0;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+h4 {
+    color: red;
+}
+
+form {
+    text-align: center;
+}
+
+input[type="email"] {
+    width: 40%;
+    padding: 12px;
+    display: block;
+    margin: auto;
+}
+
+input[type="submit"] {
+    width: 20%;
+    padding: 12px;
+    border: 0;
+    padding: 12px;
+    border-radius: 6px;
+    background-color: rgb(62, 62, 255);
+    color: white;
+    font-size: 20px;
+    margin: 20px 0;
+}
+
+@media (max-width: 800px) {
+    #nav {
+        position: static;
+    }
+}
