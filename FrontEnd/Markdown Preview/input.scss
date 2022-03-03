@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100&family=Nunito:wght@500&display=swap');
+$font-editor: 'JetBrains Mono',
+monospace;
+$font-preview: 'Nunito',
+sans-serif;
+$editor-area: rgb(29, 29, 29);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    overflow: hidden;
+
+    img {
+        max-width: 100%;
+    }
+}
+
+.editorPage {
+    width: 50%;
+    overflow: auto;
+    min-height: 100vh;
+    flex-flow: row wrap;
+    background-color: $editor-area;
+    transition: all 0.5s ease;
+
+    &.active {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 999;
+    }
+
+    .editorHeader {
+        width: 100%;
+        height: 30px;
+        background-color: rgb(19, 19, 19);
+        display: flex;
+        justify-content: space-between;
+        padding: 0 12px;
+        align-items: center;
+        font-family: $font-preview;
+
+        .editorLogo {
+            p {
+                font-size: 1.25rem;
+                font-weight: 600;
+                color: white;
+            }
+        }
+
+        .editorMax {
+            button {
+                cursor: pointer;
+                outline: none;
+                border: 0;
+                background-color: transparent;
+                display: table-cell;
+
+                i {
+                    vertical-align: center;
+                    font-size: 1.25rem;
+                    color: white;
+                    vertical-align: center;
+                }
+            }
+        }
+    }
+
+    .editorArea {
+        font-family: $font-editor;
+        width: 100%;
+        height: calc(100vh - 30px);
+        background-color: $editor-area;
+
+        textarea {
+            resize: none;
+            width: 100%;
+            font-size: 1rem;
+            padding: 6px;
+            outline: none;
+            color: white;
+            background-color: transparent;
+            border: 0;
+            height: 100%;
+            animation-name: caretRgb;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            
+
+            &::-webkit-scrollbar {
+                width: 4px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: white;
+            }
+        }
+    }
+}
+
+@keyframes caretRgb {
+    0% {
+        caret-color: rgb(0, 102, 255);
+    }
+    
+    50% {
+        caret-color: rgb(0, 255, 21);
+    }
+
+    99% {
+        caret-color: rgb(255, 0, 0);
+    }
+
+    100% {
+        caret-color: rgb(0, 102, 255);
+    }
+    
+}
+
+.previewPage {
+    width: 50%;
+    overflow: hidden;
+    min-height: 100vh;
+    position: relative;
+
+    &::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $editor-area;
+    }
+    transition: all 0.5s ease;
+
+    &.active {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .previewHeader {
+        width: 100%;
+        height: 30px;
+        background-color: rgb(19, 19, 19);
+        display: flex;
+        justify-content: space-between;
+        padding: 0 12px;
+        align-items: center;
+        font-family: $font-preview;
+
+        .previewLogo {
+            p {
+                font-size: 1.25rem;
+                font-weight: 600;
+                color: white;
+            }
+        }
+
+        .previewMax {
+            button {
+                cursor: pointer;
+                outline: none;
+                border: 0;
+                background-color: transparent;
+                display: table-cell;
+
+                i {
+                    vertical-align: center;
+                    font-size: 1.25rem;
+                    color: white;
+                    vertical-align: center;
+                }
+            }
+        }
+    }
+
+    #preview {
+        font-family: $font-editor;
+        width: 100%;
+        top: 30px;
+        left: 0;
+        background-color: white;
+        position: absolute;
+        height: calc(100vh - 30px);
+        overflow: auto;
+
+        &::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: $editor-area;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        display: block;
+        overflow: hidden;
+    }
+
+    .editorPage {
+        width: 100%;
+        min-height: 100vh;
+    }
+
+    .previewPage {
+        position: fixed;
+        top: calc(100% - 30px);
+        left: 0;
+        width: 100%;
+    }
+}

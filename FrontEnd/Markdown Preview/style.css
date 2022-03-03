@@ -1,0 +1,189 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100&family=Nunito:wght@500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  max-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  overflow: hidden;
+}
+.container img {
+  max-width: 100%;
+}
+
+.editorPage {
+  width: 50%;
+  overflow: auto;
+  min-height: 100vh;
+  flex-flow: row wrap;
+  background-color: #1d1d1d;
+  transition: all 0.5s ease;
+}
+.editorPage.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+}
+.editorPage .editorHeader {
+  width: 100%;
+  height: 30px;
+  background-color: #131313;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 12px;
+  align-items: center;
+  font-family: "Nunito", sans-serif;
+}
+.editorPage .editorHeader .editorLogo p {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+}
+.editorPage .editorHeader .editorMax button {
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  background-color: transparent;
+  display: table-cell;
+}
+.editorPage .editorHeader .editorMax button i {
+  vertical-align: center;
+  font-size: 1.25rem;
+  color: white;
+  vertical-align: center;
+}
+.editorPage .editorArea {
+  font-family: "JetBrains Mono", monospace;
+  width: 100%;
+  height: calc(100vh - 30px);
+  background-color: #1d1d1d;
+}
+.editorPage .editorArea textarea {
+  resize: none;
+  width: 100%;
+  font-size: 1rem;
+  padding: 6px;
+  outline: none;
+  color: white;
+  background-color: transparent;
+  border: 0;
+  height: 100%;
+  animation-name: caretRgb;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+.editorPage .editorArea textarea::-webkit-scrollbar {
+  width: 4px;
+}
+.editorPage .editorArea textarea::-webkit-scrollbar-thumb {
+  background-color: white;
+}
+
+@keyframes caretRgb {
+  0% {
+    caret-color: #0066ff;
+  }
+  50% {
+    caret-color: #00ff15;
+  }
+  99% {
+    caret-color: red;
+  }
+  100% {
+    caret-color: #0066ff;
+  }
+}
+.previewPage {
+  width: 50%;
+  overflow: hidden;
+  min-height: 100vh;
+  position: relative;
+  transition: all 0.5s ease;
+}
+.previewPage::-webkit-scrollbar {
+  width: 4px;
+}
+.previewPage::-webkit-scrollbar-thumb {
+  background-color: #1d1d1d;
+}
+.previewPage.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.previewPage .previewHeader {
+  width: 100%;
+  height: 30px;
+  background-color: #131313;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 12px;
+  align-items: center;
+  font-family: "Nunito", sans-serif;
+}
+.previewPage .previewHeader .previewLogo p {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+}
+.previewPage .previewHeader .previewMax button {
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  background-color: transparent;
+  display: table-cell;
+}
+.previewPage .previewHeader .previewMax button i {
+  vertical-align: center;
+  font-size: 1.25rem;
+  color: white;
+  vertical-align: center;
+}
+.previewPage #preview {
+  font-family: "JetBrains Mono", monospace;
+  width: 100%;
+  top: 30px;
+  left: 0;
+  background-color: white;
+  position: absolute;
+  height: calc(100vh - 30px);
+  overflow: auto;
+}
+.previewPage #preview::-webkit-scrollbar {
+  width: 4px;
+}
+.previewPage #preview::-webkit-scrollbar-thumb {
+  background-color: #1d1d1d;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    display: block;
+    overflow: hidden;
+  }
+
+  .editorPage {
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  .previewPage {
+    position: fixed;
+    top: calc(100% - 30px);
+    left: 0;
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
