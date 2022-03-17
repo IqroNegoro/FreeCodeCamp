@@ -1,0 +1,136 @@
+$padColor: rgb(28, 28, 28);
+$padColor-active: rgb(51, 51, 51);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $padColor;
+
+    .drum {
+        display: flex;
+        width: 50%;
+        height: 320px;
+        background-color: grey;
+        border-radius: 4px;
+
+        .left {
+            flex-grow: 1;
+            display: grid;
+            grid-template-rows: repeat(3, 1fr);
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            padding: 0.75rem;
+
+            div {
+                background-color: $padColor;
+                box-shadow: 4px 4px 4px 0 rgba($color: #000000, $alpha: 0.5);
+                cursor: pointer;
+                transition: all 0.25s ease;
+                border-radius: 0.5rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                font-size: 1rem;
+                font-weight: 600;
+
+
+                &.active {
+                    background-color: $padColor-active;
+                    transform: translateY(4px);
+                    box-shadow: 4px 4px 4px 0 rgba($color: #000000, $alpha: 0);
+                }
+            }
+        }
+
+        .right {
+            flex-grow: 1;
+            padding: 0.75rem;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+
+            .power, .bank {
+                font-size: 1.5rem;
+                font-weight: 600;
+                text-align: center;
+
+                .switch {
+                    display: block;
+                    position: relative;
+                    background-color: $padColor;
+                    width: 125px;
+                    height: 40px;
+                    border-radius: 35px;
+                    position: relative;
+
+                    span {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        bottom: 0;
+                        right: 0;
+                        &::before {
+                            width: 30px;
+                            height: 30px;
+                            content: "";
+                            position: absolute;
+                            border-radius: 50%;
+                            top: 5px;
+                            left: 5px;
+                            background-color: white;
+                            transition: all 0.2s ease;
+                        }
+                    }
+                    &.active span::before {
+                        left: 70%;
+                        background-color: rgb(0, 230, 0);
+                    }
+                    
+                }
+            }
+
+            .display {
+                width: 50%;
+                height: 50px;
+                background-color: $padColor;
+                color: white;
+                font-weight: 600;
+                font-size: 1.25rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            input[type=range] {
+                appearance: none;
+                background: transparent;
+                outline: none;
+                background-color: white;
+                height: 2px;
+
+                &::-webkit-slider-thumb {
+                    appearance: none;
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    background-color: $padColor;
+                }
+              }
+
+
+        }
+
+    }
+}

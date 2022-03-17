@@ -1,0 +1,119 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1c1c1c;
+}
+.container .drum {
+  display: flex;
+  width: 50%;
+  height: 320px;
+  background-color: grey;
+  border-radius: 4px;
+}
+.container .drum .left {
+  flex-grow: 1;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 0.75rem;
+}
+.container .drum .left div {
+  background-color: #1c1c1c;
+  box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.container .drum .left div.active {
+  background-color: #333333;
+  transform: translateY(4px);
+  box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0);
+}
+.container .drum .right {
+  flex-grow: 1;
+  padding: 0.75rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+.container .drum .right .power, .container .drum .right .bank {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+.container .drum .right .power .switch, .container .drum .right .bank .switch {
+  display: block;
+  position: relative;
+  background-color: #1c1c1c;
+  width: 125px;
+  height: 40px;
+  border-radius: 35px;
+  position: relative;
+}
+.container .drum .right .power .switch span, .container .drum .right .bank .switch span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.container .drum .right .power .switch span::before, .container .drum .right .bank .switch span::before {
+  width: 30px;
+  height: 30px;
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  top: 5px;
+  left: 5px;
+  background-color: white;
+  transition: all 0.2s ease;
+}
+.container .drum .right .power .switch.active span::before, .container .drum .right .bank .switch.active span::before {
+  left: 70%;
+  background-color: #00e600;
+}
+.container .drum .right .display {
+  width: 50%;
+  height: 50px;
+  background-color: #1c1c1c;
+  color: white;
+  font-weight: 600;
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container .drum .right input[type=range] {
+  appearance: none;
+  background: transparent;
+  outline: none;
+  background-color: white;
+  height: 2px;
+}
+.container .drum .right input[type=range]::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: #1c1c1c;
+}
+
+/*# sourceMappingURL=style.css.map */
