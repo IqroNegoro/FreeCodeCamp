@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100&family=Lato&family=Nunito:wght@500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: grey;
+}
+.container .calculator {
+  width: 25%;
+  display: grid;
+  grid-template-rows: 40px 50px repeat(5, 1fr);
+  grid-template-columns: repeat(4, 25%);
+  user-select: none;
+  padding: 2px;
+  background-color: black;
+  border-radius: 4px;
+  height: 70vh;
+}
+.container .calculator button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  border: 0;
+  background-color: #373737;
+  color: white;
+  transition: all 0.2s ease;
+  outline: 1px solid black;
+  cursor: pointer;
+  padding: 0 6px;
+}
+.container .calculator button:hover {
+  outline: 1px solid white;
+  z-index: 1;
+}
+.container .calculator button:active {
+  transform: translateY(2px);
+}
+.container .calculator button.active {
+  outline: 1px solid white;
+  z-index: 1;
+  transform: translateY(2px);
+}
+.container .calculator .previous, .container .calculator .display {
+  color: white;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  grid-area: 2/1/2/5;
+  padding: 0 6px;
+  font-size: 1.5rem;
+}
+.container .calculator .display {
+  grid-area: 2/1/2/5;
+}
+.container .calculator .previous {
+  grid-area: 1/1/1/5;
+}
+.container .calculator .clear {
+  background-color: #ce2d2d;
+}
+.container .calculator .zero {
+  grid-area: 7/1/8/3;
+}
+.container .calculator .equals {
+  grid-area: 6/4/8/5;
+}
+
+@media screen and (max-width: 800px) {
+  .container .calculator {
+    width: 70%;
+    min-height: 100vh;
+  }
+}
+@media screen and (max-width: 640px) {
+  .container .calculator {
+    width: 100%;
+    min-height: 100vh;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

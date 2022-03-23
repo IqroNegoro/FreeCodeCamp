@@ -1,9 +1,11 @@
 $bgcolor: rgb(55, 55,55);
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100&family=Lato&family=Nunito:wght@500&display=swap');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
 }
 
 .container {
@@ -13,16 +15,17 @@ $bgcolor: rgb(55, 55,55);
     justify-content: center;
     align-items: center;
     background-color: grey;
-
+    
     .calculator {
-        width: 35%;
+        width: 25%;
         display: grid;
-        grid-template-rows: 40px 50px repeat(5, 80px);
+        grid-template-rows: 40px 50px repeat(5, 1fr);
         grid-template-columns: repeat(4, 25%);
         user-select: none;
         padding: 2px;
         background-color: black;
-        
+        border-radius: 4px;
+        height: calc(100vh - 30vh);
         
         button {
             display: flex;
@@ -44,6 +47,12 @@ $bgcolor: rgb(55, 55,55);
             }
 
             &:active {
+                transform: translateY(2px);
+            }
+
+            &.active {
+                outline: 1px solid white;
+                z-index: 1;
                 transform: translateY(2px);
             }
 
@@ -84,3 +93,16 @@ $bgcolor: rgb(55, 55,55);
 
     }
 } 
+@media screen and (max-width: 800px) {
+    .container .calculator {
+        width: 70%;
+        min-height: 100vh;
+    }
+}
+@media screen and (max-width: 640px) {
+    .container .calculator {
+        width: 100%;
+        min-height: 100vh;
+    }
+}
+
