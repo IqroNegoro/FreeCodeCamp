@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100&family=Lato&family=Nunito:wght@500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  background-color: #1d1d1d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+}
+.container .timer {
+  width: 50%;
+  height: 70vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+.container .timer div {
+  transition: all 0.5s ease;
+}
+.container .timer i {
+  cursor: pointer;
+  font-size: 2rem;
+}
+.container .timer .title {
+  font-size: 1.5rem;
+  color: white;
+  text-align: center;
+}
+.container .timer .label {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.container .timer .label div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+  font-size: 1.5rem;
+}
+.container .timer .label div p {
+  width: 100%;
+  font-size: 2rem;
+}
+.container .timer .label #session-length, .container .timer .label #break-length {
+  font-weight: 600;
+}
+.container .timer .timers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 2rem;
+}
+.container .timer .timers #time-left {
+  font-size: 4rem;
+}
+.container .timer .timers .act {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+.container .timer .timers .act i {
+  font-size: 3rem;
+}
+.container .timer .timers.active {
+  transform: translateY(-150px);
+}
+.container .line {
+  position: fixed;
+  left: -10%;
+  top: 50%;
+  width: 10%;
+  height: 4px;
+  background-color: white;
+}
+.container .line.active {
+  animation: straight 1s infinite;
+}
+
+@keyframes straight {
+  0% {
+    left: -10%;
+  }
+  100% {
+    left: 110%;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

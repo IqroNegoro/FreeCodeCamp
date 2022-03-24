@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js" integrity="sha512-kp7YHLxuJDJcOzStgd6vtpxr4ZU9kjn77e6dBsivSz+pUuAuMlE2UTdKB7jjsWT84qbS8kdCWHPETnP/ctrFsA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container" id="App">
+        <div class="timer">
+            <div class="title">
+                <h1>25 + 5 Clock</h1>
+            </div>
+
+            <div class="label">
+                <div id="break-label">
+                    <p>Break Length</p>
+                    <div id="break-increment">
+                        <i class="bx bx-up-arrow-alt"></i>
+                    </div>
+                    <div id="break-length">
+                        5
+                    </div>
+                    <div id="break-decrement">
+                        <i class="bx bx-down-arrow-alt"></i>
+                    </div>
+                </div>
+            
+                <div id="session-label">
+                    <p>Session Length</p>
+                    <div id="session-increment">
+                        <i class="bx bx-up-arrow-alt"></i>
+                    </div>
+                    <div id="session-length">
+                        25
+                    </div>
+                    <div id="session-decrement">
+                        <i class="bx bx-down-arrow-alt"></i>
+                    </div>
+                </div>
+            </div>
+
+        <div class="timers">
+            <div id="timer-label">
+                Session
+            </div>
+            <div id="time-left">
+                25:00
+            </div>
+            <div class="act">
+                <div id="start_stop">
+                    <i class="bx bx-play"></i>
+                </div>
+                <div id="reset">
+                    <i class="bx bx-reset"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="line"></div>
+    
+    </div>
+    <!-- <script src="App.js" type="text/babel"> </script> -->
+    <script>
+        const timer = document.getElementsByClassName("timer")[0];
+        window.addEventListener("click", e => {
+            const childs = timer.children;
+            for (let i = 0; i < childs.length - 1; i++) {
+                childs[i].style.opacity = getComputedStyle(childs[0]).opacity === "1" ? "0" : "1"
+            }
+            childs[childs.length - 1].classList.toggle("active");
+            timer.parentElement.lastElementChild.classList.toggle("active")
+        })
+    </script>
+</body>
+</html>
