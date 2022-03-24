@@ -1,9 +1,8 @@
-const isOperator = /[x/+‑]/, endsWithOperator = /[x+‑/]$/, endsWithNegativeSign = /\d[x/+‑]{1}‑$/
+const isOperator = /[x/+-]/, endsWithOperator = /[x+-/]$/, endsWithNegativeSign = /\d[x/+-]{1}-$/
+
 class Calculator extends React.Component {
     constructor(props) {
         super(props);
-
-        this.keyRef = React.createRef();
 
         this.state = {
             curVal: "0",
@@ -24,11 +23,13 @@ class Calculator extends React.Component {
     }
 
     backSpace() {
-        if (this.state.curVal !== "0") {
-            this.setState({
-                curVal: this.state.curVal.slice(0, -1)
-            })
-        }
+        (this.state.curVal !== "0" && this.state.curVal.length !== 1) ? this.setState({
+            curVal: this.state.curVal.slice(0, -1),
+            formula: this.state.formula.slice(0, -1)
+        }) : this.setState({
+            curVal: "0",
+            formula: this.state.formula.slice(0, -1)
+        })
     }
 
     maxDigit() {
@@ -40,35 +41,73 @@ class Calculator extends React.Component {
         }, 1000);
     }
 
-    handleEval(e) {
-
+    handleEval() {
+        if (!this.state.curVal.includes("Max")) {
+            let expression = this.state.formula;
+            while (endsWithOperator.test(expression)) {
+                expression = expression.slice(0, -1)
+            }
+            expression = expression.replace(/x/g, "*").replace(/-/g, "-").replace("--", "+0+0+0+0+0+0+");
+            let answer = Math.round(1000000000000 * eval(expression)) / 1000000000000;
+            this.setState({
+                curVal: answer.toString(),
+                formula: expression.replace(/\*/g, '⋅').replace(/-/g, '-').replace('+0+0+0+0+0+0+', '--').replace(/(x|\/|\+)-/, '$1-').replace(/^-/, '-') + '=' + answer,
+                prevVal: answer,
+                evaluated: true
+            })
+        }
     }
     
     handleOperators(e) {
-
+        if (!this.state.curVal.includes("Max")) {
+            const value = e.value || e.target.value;
+            const { formula, prevVal, evaluated } = this.state;
+            this.setState({curVal: value, evaluated: false}) 
+            if (evaluated) {
+                this.setState({formula: prevVal + value})
+            } else if (!endsWithOperator.test(formula)) {
+                this.setState({
+                    prevVal: formula,
+                    formula: formula + value
+                })
+            } else if (!endsWithNegativeSign.test(formula)) {
+                this.setState({
+                    formula: (endsWithNegativeSign.test(formula + value) ? formula: prevVal) + value
+                  });
+            } else if (value !== "-") {
+                this.setState({
+                    formula: prevVal + value
+                })
+            }
+        }
     }
     
     handleNumbers(e) {
         if (!this.state.curVal.includes("Max")) {
-            console.log(this.state.curVal.length)
             const {formula, curVal, evaluated} = this.state
+            let val = e.value || e.target.value;
+            this.setState({evaluated: false})
             if (curVal.length > 21) {
                 this.maxDigit()
-            } else {
-                let val = e.target.value;
+            } else if (evaluated) {
                 this.setState({
-                    curVal: curVal === "0" ? val : curVal + val,
+                    curVal: val,
+                    formula: val !== "0" ? val : ""
+                })
+            } else {
+                this.setState({
+                    curVal: curVal === "0" || isOperator.test(curVal) ? val : curVal + val,
+                    formula: curVal === "0" && val === "0" ? formula === "" ? val : formula : /([^.0-9]0|^0)$/.test(formula) ? formula.slice(0, -1) + val : formula + val
                 })
             }
         }
     }
 
     handleKey(e) {
-        console.log(e.key)
         document.querySelector(`[value="${e.key}"]`).classList.add("active")
         setTimeout(() => {
         document.querySelector(`[value="${e.key}"]`).classList.remove("active")
-        }, 200);
+        }, 150);
 
         if (e.key === "Backspace") {
             this.backSpace();
@@ -84,15 +123,14 @@ class Calculator extends React.Component {
             "1","2","3","4","5","6","7","8", "9", "0", ".", "+", "=", "/", "-", "x"
         ]
         if (list.indexOf(e.key) >= 0) {
+            let {curVal} = this.state
+            let i = list.indexOf(e.key);
             if (e.key === "=") {
                 this.handleEval();
             } else if (isOperator.test(e.key)) {
-                this.handleOperators();
+                    this.handleOperators(document.querySelector(`[value="${list[i]}"]`));
             } else {
-                let i = list.indexOf(e.key);
-                this.setState({
-                    curVal: this.state.curVal === "0" ? list[i] : this.state.curVal + list[i]
-                })
+                this.handleNumbers(document.querySelector(`[value="${list[i]}"]`))
             }
         }
     }
@@ -108,6 +146,28 @@ class Calculator extends React.Component {
     }
     
     handleDecimal() {
+        if (this.state.evaluated) {
+            this.setState({
+                currentVal: '0.',
+                formula: '0.',
+                evaluated: false
+              });
+        } else if (!this.state.curVal.includes(".") && !this.state.curVal.includes("Max")) {
+            this.setState({evaluated: false});
+            if (this.state.curVal.length > 21) {
+                this.maxDigit();
+            } else if (endsWithOperator.test(this.state.formula) || (this.state.curVal === "0" && this.state.formula === "")) {
+                this.setState({
+                    curVal: "0.",
+                    formula: this.state.formula + "0."
+                })
+            } else {
+                this.setState({
+                    curVal: this.state.formula.match(/(-?\d+\.?\d*)$/)[0] + '.',
+                    formula: this.state.formula + '.'
+                  });
+            }
+        }
     }
 
 
@@ -149,7 +209,7 @@ let Buttons = props => {
             <button className="one" id="one" value="1" onClick={props.number}>1</button>
             <button className="two" id="two" value="2" onClick={props.number}>2</button>
             <button className="three" id="three" value="3" onClick={props.number}>3</button>
-            <button className="substract" id="substract" value="-" onClick={props.operator}>-</button>
+            <button className="substract" id="subtract" value="-" onClick={props.operator}>-</button>
             <button className="four" id="four" value="4" onClick={props.number}>4</button>
             <button className="five" id="five" value="5" onClick={props.number}>5</button>
             <button className="six" id="six" value="6" onClick={props.number}>6</button>
