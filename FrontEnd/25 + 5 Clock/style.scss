@@ -17,6 +17,25 @@ $bgColor: rgb(29, 29, 29);
     align-items: center;
     flex-direction: column;
     color: white;
+
+    button {
+        background-color: transparent;
+        transition: all 0.2s ease;
+        outline: none;
+        border: 0;
+        color: white;
+        margin: 0 16px;
+        padding: 6px;
+        border-radius: 4px;
+
+        &:hover {
+            background-color: rgb(55, 55, 55);
+        }
+
+        &:active {
+            background-color: rgb(36, 36, 36);
+        }
+    }
     
     .timer {
         width: 50%;
@@ -54,6 +73,9 @@ $bgColor: rgb(29, 29, 29);
                 flex-wrap: wrap;
                 text-align: center;
                 font-size: 1.5rem;
+                & > i {
+                    font-size: 2.5rem;
+                }
                 p {
                     width: 100%;
                     font-size: 2rem;

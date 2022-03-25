@@ -16,6 +16,22 @@
   flex-direction: column;
   color: white;
 }
+.container button {
+  background-color: transparent;
+  transition: all 0.2s ease;
+  outline: none;
+  border: 0;
+  color: white;
+  margin: 0 16px;
+  padding: 6px;
+  border-radius: 4px;
+}
+.container button:hover {
+  background-color: #373737;
+}
+.container button:active {
+  background-color: #242424;
+}
 .container .timer {
   width: 50%;
   height: 70vh;
@@ -49,6 +65,9 @@
   flex-wrap: wrap;
   text-align: center;
   font-size: 1.5rem;
+}
+.container .timer .label div > i {
+  font-size: 2.5rem;
 }
 .container .timer .label div p {
   width: 100%;
